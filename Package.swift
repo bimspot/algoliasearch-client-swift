@@ -7,7 +7,7 @@ let package = Package(
     name: "AlgoliaSearchClient",
     platforms: [
         .iOS(.v8),
-        .macOS(.v10_10),
+        .macOS(.v10_15),
         .watchOS(.v2),
         .tvOS(.v9)
     ],
@@ -17,14 +17,15 @@ let package = Package(
             targets: ["AlgoliaSearchClient"])
     ],
     dependencies: [
-        .package(url:"https://github.com/apple/swift-log.git", from: "1.3.0")
+        .package(url:"https://github.com/apple/swift-log.git", from: "1.3.0"),
+        .package(url: "https://github.com/apple/swift-crypto.git", from: "1.0.2")
     ],
     targets: [
         .target(
             name: "AlgoliaSearchClient",
-            dependencies: ["Logging"]),
+            dependencies: ["Logging", "Crypto"]),
         .testTarget(
             name: "AlgoliaSearchClientTests",
-            dependencies: ["AlgoliaSearchClient", "Logging"])
+            dependencies: ["AlgoliaSearchClient", "Logging", "Crypto"])
     ]
 )
